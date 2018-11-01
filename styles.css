@@ -1,3 +1,49 @@
 body {
-	background: violet;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: radial-gradient(cornsilk, teal);
+	height: 100vh;
+	flex-direction: column;
+}
+
+#game {
+	height:16rem;
+	width:16rem;
+	display: flex;
+	/*background: teal; */
+	border-radius: 5px;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	/*border:1px solid white;*/
+}
+
+.boardSpace {
+	background: teal;
+	height:5rem;
+	width: 5rem;
+	border: 1px solid #fff;
+	border-radius: 5px;
+	cursor:pointer;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	color:#fff;
+	font-family: arial;
+	font-size: 5rem;
+}
+
+.winning-message {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width:15rem;
+	height:5rem;
+	background:teal;
+	border:1px solid #fff;
+	border-radius: 5px;
+	color:#fff;
+	font-family: Arial;
+	font-size:4rem;
 }
