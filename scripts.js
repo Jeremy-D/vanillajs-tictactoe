@@ -164,6 +164,7 @@ const gameDisplayController = (()=>{
  			//alert(gameBoard.currentPlayer.symbol + ' wins')
  		}
 
+
  		const winMessageFunc = (condition)=>{
  			if (condition == win) {
  				winMessage.innerHTML = gameBoard.currentPlayer.symbol + ' wins'
@@ -174,7 +175,14 @@ const gameDisplayController = (()=>{
 			setTimeout(function(){winMessage.classList.remove('message-animation')}, 5000)
  		}
 
- 		//reset.addEventListener('click', winMessageFunc('bloop'))
+ 		const regularReset = ()=>{
+ 			gameBoard.board = gameBoard.reset();
+ 			boardSpaces.forEach((space)=>{
+ 				space.innerHTML = ''
+ 			})
+ 		}
+
+ 		reset.addEventListener('click', regularReset)
 
  		if (win){
  			displayControllerReset()
