@@ -34,7 +34,8 @@ body {
 	font-size: 5rem;
 }
 
-.winning-message {
+#win-message {
+	opacity:0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -46,4 +47,30 @@ body {
 	color:#fff;
 	font-family: Arial;
 	font-size:4rem;
+}
+
+.message-animation {
+	animation: showMessage 5s ease-in-out;
+}
+
+@keyframes showMessage {
+	0% {
+		opacity:0;
+	}
+	50%{
+		opacity:1;
+	}
+	100% {
+		opacity:0;
+	}
+}
+
+.spaces-animation {
+	animation: fadeSpaces 5s ease-in-out 2;
+}
+
+@keyframes fadeSpaces {
+	0%{opacity: 1;}
+	50%{opacity: 1}
+	100%{opacity: 0;}
 }

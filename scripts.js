@@ -84,8 +84,6 @@ const gameBoard = (()=>{
 	const checkTie = (arr)=>{
 		let tie = false
 		if(arr.indexOf('') == -1){
-			console.log('yes tie')
-    	alert('Tie Game')
     	tie = true
   	} else {
     	tie = false
@@ -105,6 +103,9 @@ const gameBoard = (()=>{
 //=====================================
 const gameDisplayController = (()=>{
 	const game = document.getElementById('game');
+	const winMessage = document.getElementById('win-message');
+	const reset = document.getElementById('reset');
+
 	//dynamically create board-----------
 	let spaceCounter = 0;
 	let boardSpace = '';
@@ -140,17 +141,47 @@ const gameDisplayController = (()=>{
  		console.log('tie vvvvv')
  		console.log(tie)
 
+ 		
  		const displayControllerReset = () => {
  			console.log('RESET')
- 			gameBoard.board = gameBoard.reset()
+ 			gameBoard.board = gameBoard.reset();
+ 			
+ 			//add unecessary fade animation to board spaces on reset
+ 			(function spacething(){
+ 				boardSpaces.forEach((space)=>{
+ 					space.classList.add('spaces-animation')
+ 					//space.classList.remove('spaces-animation')
+ 					setTimeout(function(){space.classList.remove('spaces-animation')}, 5050);
+ 				})
+ 				
+ 			})()
+
  			setTimeout(function(){boardSpaces.forEach((space)=>{
  				space.innerHTML = ''
- 			})}, 1000)
- 			alert(gameBoard.currentPlayer.symbol + ' wins')
+ 			})}, 5000)
+ 			winMessage.innerHTML = ''
+ 			//winMessage.innerHTML = gameBoard.currentPlayer.symbol + ' wins'
+ 			//alert(gameBoard.currentPlayer.symbol + ' wins')
  		}
- 		
- 		if (win || tie){
+
+ 		const winMessageFunc = (condition)=>{
+ 			if (condition == win) {
+ 				winMessage.innerHTML = gameBoard.currentPlayer.symbol + ' wins'
+ 			} else if (condition == tie) {
+ 				winMessage.innerHTML = 'Tie'
+ 			}
+ 			winMessage.classList.add('message-animation')
+			setTimeout(function(){winMessage.classList.remove('message-animation')}, 5000)
+ 		}
+
+ 		//reset.addEventListener('click', winMessageFunc('bloop'))
+
+ 		if (win){
  			displayControllerReset()
+ 			winMessageFunc(win)
+ 		} else if (tie) {
+ 			displayControllerReset()
+ 			winMessageFunc(tie)
  		}
 
  		//change player AFTER checking win or tie conditions
@@ -159,8 +190,6 @@ const gameDisplayController = (()=>{
 
 	}
 })()
-
-//gameDisplayController()
 
 
 
