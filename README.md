@@ -1,1 +1,1 @@
-This is a project for The Odin Project. We’re making a Tic Tac Toe game you can play in your browser! We'll use factory functions and the module pattern.
+This is a project for The Odin Project. We’re making a Tic Tac Toe game you can play in your browser! We'll use factory functions and the module pattern. [see it live!](https://jeremy-d.github.io/vanillajs-tictactoe/)
